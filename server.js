@@ -1,13 +1,8 @@
 
 const http = require('http');
 
-const requestListener = function (req, res) {
-	if (req.method == 'GET' && (req.url == '/' || req.url == '/create'))
-	{
-    res.sendFile(__dirname+'/index.html');
-	};
-}
-
-
-const server = http.createServer(requestListener);
-server.listen(8000);
+http.createServer(function(request, response) {
+  response.writeHead(200, {"Content-Type": "text/plain"});
+  response.write("Heroku world!");
+  response.end();
+}).listen(process.env.PORT);
