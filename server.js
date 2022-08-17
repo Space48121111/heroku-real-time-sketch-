@@ -11,6 +11,3 @@ const requestListener = function (req, res) {
 
 const server = http.createServer(requestListener);
 server.listen(8000);
-
-
-what
