@@ -6,5 +6,3 @@ http.createServer(function(request, response) {
   response.write("Finally! Hello World!");
   response.end();
 }).listen(process.env.PORT);
-
-but you can't add html here
