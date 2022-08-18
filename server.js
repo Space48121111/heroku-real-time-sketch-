@@ -29,7 +29,6 @@ function saveMessages()
 function transmitMessages() {
   // send messages to all the users
   io.emit('messages', convo);
-
 }
 
 function drawLine(startX, startY, x, y) {
@@ -52,6 +51,20 @@ app.get('*/css/styles.css', (req, res) => {
   res.sendFile(__dirname + '/css/styles.css');
 });
 
+function receiveMessage(message, index, id)
+{
+	var newMessage = {
+		message: message,
+		id: id,
+		index: index
+	};
+  
+	convo.push(newMessage);
+	saveMessages();
+	// chatting part
+	transmitMessages();
+}
+
 io.on('connection', (socket) => {
   console.log('A user has connected.');
   io.emit('pixels', pixels);
@@ -65,12 +78,13 @@ io.on('connection', (socket) => {
   // })
   // message: startX+":"+startY+':'+x+':'+y
 
-  socket.on('chitChat', (message) => {
-    convo.push(message);
-	saveMessages();
-    // chatting part
-    transmitMessages();
+  socket.on('chitChat1', (message) => {
+	receiveMessage(message, 1, socket.id);
   })
+  
+  socket.on('chitChat2', (message) => {
+	receiveMessage(message, 2, socket.id);
+  })  
 
   socket.on('line', (message) => {
     console.log(message);
