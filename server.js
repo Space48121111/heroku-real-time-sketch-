@@ -71,7 +71,7 @@ function FindFile(req)
 for (var i=0; i<allowedFiles.length; i++)
 {
 	app.get('*' + allowedFiles[i], (req, res) => {
-		var fileName = FindFile(req);
+		var fileName = FindFile(req.originalUrl);
 		if (fileName.length > 0)
 		{
   			res.sendFile(__dirname + fileName);
