@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test</title>
+<style>
+td {background-color: powderblue; padding: 2px; margin: 5px; }
+</style>
+</head>
+<body>
+
+<center>
+<h1>Asteroid</h1>
+
+<canvas id="canvas" width="450" height="300"></canvas>
+</center>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/variables.js"></script>
+<script src="/clientPlayer.js"></script>
+<script src="/input.js"></script></script>
+<script>
+
+const canvas = document.querySelector('#canvas');
+const ctx = canvas.getContext('2d');
+
+var myID;
+
+var socket = io();
+
+var previousTime = new Date();
+var smoothFPS = [];
+
+function timeToMilliSeconds(time)
+{
+	var hours = time.getHours();
+	var minutes = (hours * 60) + time.getMinutes();
+	var seconds = (minutes * 60) + time.getSeconds();
+	var milliseconds = (seconds * 1000) + time.getMilliseconds();
+	return milliseconds;
+}
+
+function drawFPS()
+{
+	//Get curren time
+	var now = new Date();
+	
+	//Get current time and previous time in total milliseconds
+	var currentTime = timeToMilliSeconds(now);
+	var oldTime = timeToMilliSeconds(previousTime);
+	
+	//Set previous time
+	previousTime = now;
+	
+	var interval = currentTime - oldTime;
+	
+	var fps = (1.0/interval) * 1000.0;
+	
+	smoothFPS.push(fps);
+	if (smoothFPS.length > 10)
+	{
+		smoothFPS.splice(0, 1);
+	}
+	
+	fps = 0;
+	for (var i=0; i<smoothFPS.length; i++)
+	{
+		fps += smoothFPS[i];
+	}
+	fps = parseInt(fps/smoothFPS.length);
+
+	ctx.font = '16px serif';
+	ctx.fillText('FPS ' + fps, 10, 14);
+}
+
+function draw()
+{
+	ctx.fillStyle = 'black';
+	ctx.beginPath();
+	ctx.rect(0, 0, canvas.width, canvas.height);
+	ctx.fill();
+	
+	for (var i=0; i<users.length; i++)
+	{
+		drawSpaceship(i);
+	}
+	
+	drawFPS();
+}
+
+//
+socket.on('users', function(msg) {
+	users = msg;
+	
+	if (users.length != i_users.length)
+	{
+		i_users = users;
+	}
+});
+	
+//listen to my id
+socket.on('id', function(msg) 
+{
+	myID = msg;
+});
+
+function interpolate(current, target, speed) 
+{
+  var angleTrajectory = target - current;
+  // ignore the diff once it approaches indefinitely to the target
+  if (Math.abs(angleTrajectory) < 0.0001) 
+  {
+    return target;
+  }
+  // speed <= 1, at most the target val that it won't over-shoot
+  return current + angleTrajectory*Math.min(1, speed);
+}
+
+//
+function clientFrame()
+{
+	time++;
+	
+	//Interpolate position and angle so we don't have lag
+	for (var i=0; i<i_users.length; i++)
+	{
+		i_users[i].x = interpolate(i_users[i].x, users[i].x, 0.8);
+		i_users[i].y = interpolate(i_users[i].y, users[i].y, 0.8);
+		i_users[i].angle = interpolate(i_users[i].angle, users[i].angle, 0.8);
+	}
+	
+	draw();
+}
+
+setInterval(function(){
+  clientFrame()
+}, 33);
+ 
+</script>
+	
+</body>
+</html>
