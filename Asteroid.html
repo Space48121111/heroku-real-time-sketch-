@@ -123,9 +123,9 @@ function clientFrame()
 	//Interpolate position and angle so we don't have lag
 	for (var i=0; i<i_users.length; i++)
 	{
-		i_users[i].x = interpolate(i_users[i].x, users[i].x, 0.8);
-		i_users[i].y = interpolate(i_users[i].y, users[i].y, 0.8);
-		i_users[i].angle = interpolate(i_users[i].angle, users[i].angle, 0.8);
+		i_users[i].x = interpolate(i_users[i].x, users[i].x, 0.9);
+		i_users[i].y = interpolate(i_users[i].y, users[i].y, 0.9);
+		i_users[i].angle = interpolate(i_users[i].angle, users[i].angle, 0.9);
 	}
 	
 	draw();
