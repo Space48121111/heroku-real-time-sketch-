@@ -39,6 +39,7 @@
 		}
 		
 		div.innerHTML += "</ul>";
+		div.scrollTop = div.scrollHeight;
 	  }
 
       socket.on('messages', function(convo) 
