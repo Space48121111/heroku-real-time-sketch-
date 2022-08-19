@@ -177,6 +177,7 @@ io.on('connection', (socket) => {
 		if (i != -1)
 		{
 			v.users[i].upPressed = msg;
+			console.log("User " + v.users[i].id + " up is now: " + msg);
 		}
 	});
 
