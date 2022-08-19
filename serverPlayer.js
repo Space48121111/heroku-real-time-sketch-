@@ -1,5 +1,5 @@
-const v = require("./asteroid/serverVariables.js");
-const utils = require("./asteroid/utilFuncs.js");
+const v = require("./serverVariables.js");
+const utils = require("./utilFuncs.js");
 
 module.exports = {
 
