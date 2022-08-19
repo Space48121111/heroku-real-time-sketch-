@@ -60,7 +60,8 @@ var allowedFiles = ["/Asteroid.html", "/index.js", "/css/styles.css", "/input.js
 for (var i=0; i<allowedFiles.length; i++)
 {
 	app.get('*' + allowedFiles[i], (req, res) => {
-  	res.sendFile(__dirname + allowedFiles[i]);
+  		res.sendFile(__dirname + allowedFiles[i]);
+		console.log("Requesting file:" + allowedFiles[i]);
 	});	
 }
 
