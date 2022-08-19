@@ -56,12 +56,27 @@ app.get('/', (req, res) => {
 
 var allowedFiles = ["/Asteroid.html", "/index.js", "/css/styles.css", "/input.js", "/clientPlayer.js",  "/utilFuncs.js"]; 
 
+function FindFile(req)
+{
+	for (var i=0; i<allowedFiles.length; i++)
+	{
+		if (req.includes(allowedFiles[i]))
+			allowedFiles[i];
+	}
+	
+	return "";
+}
+
 //Add all the allowed files
 for (var i=0; i<allowedFiles.length; i++)
 {
 	app.get('*' + allowedFiles[i], (req, res) => {
-  		res.sendFile(__dirname + allowedFiles[i]);
-		console.log("Requesting file:" + allowedFiles[i]);
+		var fileName = FindFile(req);
+		if (fileName.length > 0)
+		{
+  			res.sendFile(__dirname + fileName);
+		}
+		console.log("Requesting file:" + fileName);
 	});	
 }
 
