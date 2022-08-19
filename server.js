@@ -61,7 +61,7 @@ function FindFile(req)
 	for (var i=0; i<allowedFiles.length; i++)
 	{
 		if (req.includes(allowedFiles[i]))
-			allowedFiles[i];
+			return allowedFiles[i];
 	}
 	
 	return "";
