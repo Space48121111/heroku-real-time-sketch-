@@ -52,6 +52,10 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.js');
+});
+
 app.get('*/css/styles.css', (req, res) => {
   res.sendFile(__dirname + '/css/styles.css');
 });
