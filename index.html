@@ -14,11 +14,18 @@
     </style>
   </head>
   <body>
-    <center>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/index.js"></script>	   
+      <script src="/socket.io/socket.io.js"></script>
+    <script src="/index.js"></script>
+    <script src="/server.js"></script>
+    <center>	   
     <h1>The machine that builds the machine</h1>
+    </center>
+      <div class = 'main'>
+      <div class='home'>
+        <center>
     <button id='clear'>Clear</button><br>
+     <button type="button" id="undo" onclick="undo()">Undo</button><br>
+	</center>
 	<table><tr>
 	<td>
     <canvas id="canvas" width="300" height="400"
@@ -43,7 +50,21 @@
 	</td>
 	
 	</tr></table>
+	</div>
+	<div class="todo">
+        <h3>Todo: </h3>
+        <ol>
+          <p>Please take care of urself.</p>
 
-    </center>
+        </ol>
+        </div>
+
+        <div class="sidenav">
+          <a href="#">Home</a>
+          <a href="#">Dev tools</a>
+          <a href="https://mail.google.com/mail/u/0/?pli=1#inbox">myEmail</a>
+
+        </div>
+    </div>
   </body>
 </html>
