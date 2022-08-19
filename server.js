@@ -146,6 +146,7 @@ io.on('connection', (socket) => {
   transmitMessages();
   
   addPlayer(socket.id);
+  socket.emit("id", socket.id);
 
   socket.on('chitChat1', (message) => {
 	receiveMessage(message, 1, socket.id);
