@@ -8,11 +8,33 @@ button {
 }
 
 textarea {
-
+  background-color: ivory;
 }
 
 body {
   background-color: beige;
+}
+
+.home {
+  float: right;
+}
+
+.todo {
+  height: 20%;
+  width: 50px;
+  background-color: pink;
+  font-style: oblique;
+}
+
+
+.sidenav {
+  padding: inherit;
+  height: 100%;
+  width: 200px;
+  postion: fixed;
+  background-color: blue
+  color: silver;
+  z-index: 1;
 }
 
 canvas {
