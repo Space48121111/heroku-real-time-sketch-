@@ -9,8 +9,8 @@ var convo = [];
 const fs1 = require('fs');
 const fs = require('fs').promises;
 
-const v = require("./serverVariables.js");
-var sp = require("./serverPlayer.js");
+const v = require("./asteroid/serverVariables.js");
+var sp = require("./asteroid/serverPlayer.js");
 
 function loadMessages()
 {
