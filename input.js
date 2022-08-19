@@ -22,7 +22,6 @@ document.addEventListener('keydown', (event) => {
 	{
 		users[i].upPressed = true;
 		socket.emit("up", true);
-		console.log("Client side up pressed!");
 	}
 	else if (event.key === "d") 
 	{
