@@ -6,14 +6,19 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 var pixels = [];
 var convo = [];
+const fs1 = require('fs');
 const fs = require('fs').promises;
 
 function loadMessages()
 {
-	fs.readFile(__dirname + "/messages.json")
-	.then(contents => {
-		convo = JSON.parse(contents);
-	})
+	var doesExist = fs1.existsSync(__dirname + "/messages.json");
+	if (doesExist)
+	{
+		fs.readFile(__dirname + "/messages.json")
+		.then(contents => {
+			convo = JSON.parse(contents);
+		})
+	}
 }
 
 loadMessages();
