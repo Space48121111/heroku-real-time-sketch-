@@ -29,7 +29,8 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="/variables.js"></script>
 <script src="/clientPlayer.js"></script>
-<script src="/input.js"></script></script>
+<script src="/input.js"></script>
+<script src="/messages.js"></script>
 <script>
 
 const canvas = document.querySelector('#canvas');
@@ -38,6 +39,12 @@ const ctx = canvas.getContext('2d');
 var myID;
 
 var socket = io();
+	
+socket.on('messages', function(convo) 
+ {
+	var div1 = document.getElementById("messages1");	
+	updateMessages(div1, convo, 1);
+})	
 
 var previousTime = new Date();
 var smoothFPS = [];
