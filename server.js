@@ -108,7 +108,8 @@ function addPlayer(id)
 		rightPressed: false,
 		downPressed: false,
 		leftPressed: false,
-		id: id
+		id: id,
+		score: 0
 	};
 	
 	v.users.push(newPlayer);
@@ -227,7 +228,8 @@ function serverFrame()
 			x: v.users[i].x,
 			y: v.users[i].y,
 			angle: v.users[i].angle,
-			id: v.users[i].id
+			id: v.users[i].id,
+			score: v.users[i].score
 		};
 
 		outUsers.push(outUser);
