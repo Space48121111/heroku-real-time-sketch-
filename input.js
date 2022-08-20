@@ -18,7 +18,11 @@ document.addEventListener('keydown', (event) => {
 	if (i == -1)
 		return;
 	
-	if (event.key === "w") 
+	if (event.key == 'Enter') 
+	{
+        	enter1();
+	}
+	else if (event.key === "w") 
 	{
 		users[i].upPressed = true;
 		socket.emit("up", true);
