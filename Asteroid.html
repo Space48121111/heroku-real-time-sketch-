@@ -90,6 +90,29 @@ function drawFPS()
 	ctx.font = '16px serif';
 	ctx.fillText('FPS ' + fps, 10, 14);
 }
+	
+//draw scores
+function drawScores()
+{
+	ctx.font = '16px serif';
+	
+	//Go through all the users
+	for (var i=0; i<users.length; i++)
+	{
+		var isMe = myID == users[i].id;
+		
+		if (isMe)
+		{
+			ctx.fillStyle = "white";	
+		}
+		else
+		{
+			ctx.fillStyle = "red";
+		}
+		
+		ctx.fillText('Score: ' + users[i].score, 30 + (i * 30), 14);
+	}
+}
 
 function draw()
 {
@@ -104,6 +127,7 @@ function draw()
 	}
 	
 	drawFPS();
+	drawScores();
 }
 
 //
