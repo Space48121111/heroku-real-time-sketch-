@@ -3,7 +3,9 @@
 <head>
 <title>Test</title>
 <style>
-td {background-color: powderblue; padding: 2px; margin: 5px; }
+      	#messages1 { list-style-type: none; margin: 0; padding: 0; }
+      	#messages1 > li { padding: 0.0rem 0rem; }
+      	#messages1 > li:nth-child(odd) { background: #efefef; }
 </style>
 </head>
 <body background="background.webp">
@@ -11,7 +13,17 @@ td {background-color: powderblue; padding: 2px; margin: 5px; }
 <center>
 <h1>Asteroid</h1>
 
-<canvas id="canvas" width="450" height="300"></canvas>
+<table><tr>
+
+	<td><canvas id="canvas" width="450" height="300"></canvas></td>
+	
+	<td>
+	<div id="messages1" style="background-color:white;text-align:left;height:350px;width:200px;border:1px solid #ccc;font:25px Work Sans;overflow:auto;">
+	</div><br>
+    <input type='text' id="messagebox1" rows="20" cols="40">
+    <button type="button" name="button" onclick="enter1()">Send</button>
+	</td>
+</tr></table>
 </center>
 
 <script src="/socket.io/socket.io.js"></script>
@@ -29,7 +41,7 @@ var socket = io();
 
 var previousTime = new Date();
 var smoothFPS = [];
-
+	
 function timeToMilliSeconds(time)
 {
 	var hours = time.getHours();
