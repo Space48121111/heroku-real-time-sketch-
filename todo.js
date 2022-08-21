@@ -75,7 +75,7 @@ function getTodo() {
 
   if (str.length > 0)
   {
-     io.emit('todo', str+' ');
+     socket.emit('todo', str+' ');
   }
 
   isAdding = false;
