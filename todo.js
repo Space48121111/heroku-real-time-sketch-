@@ -38,7 +38,7 @@ function updatels() {
     ls.innerHTML +=  '<button type="button" name="button"id="add" onclick=add()>Add</button>';
     if (isAdding)
     {
-      ls.innerHTML +=  '<button type="button" name="button"id="add" onclick=new()>Add</button>';
+      ls.innerHTML +=  '<button type="button" name="button"id="add" onclick=getTodo()>Add</button>';
       ls.innerHTML +=  '<input type="text" id="addTodo" rows="40" cols="40">';
     }
     else
@@ -59,7 +59,7 @@ function add() {
   updatels();
 }
 
-function new() {
+function getTodo() {
   var str = document.getElementById('add').value;
 
   if (str.length > 0)
