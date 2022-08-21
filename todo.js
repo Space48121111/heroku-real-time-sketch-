@@ -37,8 +37,8 @@ function updatels() {
     ls.innerHTML +=  '<button type="button" name="button"id="showmore" onclick=showmore()>Show More</button><br>';
     if (isAdding)
     {
-      ls.innerHTML +=  '<button type="button" name="button"id="add" onclick=getTodo()>Send</button>';
-      ls.innerHTML +=  '<input type="text" id="addTodo" rows="40" cols="40">';
+      ls.innerHTML +=  '<button type="button" name="button"id="getTodo" onclick=getTodo()>Send</button>';
+      ls.innerHTML +=  '<input type="text" id="addTodo" rows="40" cols="40"></input>';
     }
     else
     {
@@ -59,7 +59,7 @@ function add() {
 }
 
 function getTodo() {
-  var str = document.getElementById('add').value;
+  var str = document.getElementById('addTodo').value;
 
   if (str.length > 0)
   {
