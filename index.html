@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title></title>
 	<style>
       #messages1 { list-style-type: none; margin: 0; padding: 0; }
@@ -10,12 +10,12 @@
       #messages1 > li:nth-child(odd) { background: #efefef; }
       #messages2 { list-style-type: none; margin: 0; padding: 0; }
       #messages2 > li { padding: 0.0rem 0rem; }
-      #messages2 > li:nth-child(odd) { background: #efefef; }  
+      #messages2 > li:nth-child(odd) { background: #efefef; }
     </style>
   </head>
   <body>
       <script src="/socket.io/socket.io.js"></script>
-    <center>	   
+    <center>
     <h1>The machine that builds the machine</h1>
     </center>
       <div class = 'main'>
@@ -32,36 +32,42 @@
     onmouseup="stopDrawing()">
     </canvas>
 	</td>
-	
+
 	<td>
 	<div id="messages1" style="background-color:white;text-align:left;height:350px;width:200px;border:1px solid #ccc;font:25px Work Sans;overflow:auto;">
 	</div><br>
     <input type='text' id="messagebox1" rows="20" cols="40">
     <button type="button" name="button" onclick="enter1()">Send</button>
 	</td>
-		
+
 	<td>
 	<div id="messages2" style="background-color:white;text-align:left;height:350px;width:200px;border:1px solid #ccc;font:25px Work Sans;overflow:auto;">
 	</div><br>
     <input type='text' id="messagebox2" rows="40" cols="40">
     <button type="button" name="button" onclick="enter2()">Send</button>
 	</td>
-	
+
 	</tr></table>
 	</div>
 	<div class="todo">
         <h3>Todo: </h3>
-        <ol>
+        <ul>
+          <li>
           <p>Please take care of urself.</p>
-
-        </ol>
+          </li>
+          <button type="button" name="button"id="show">Show More</button><br>
+          <button type="button" name="button"id="add">Add</button>
+          <button type="button" name="button"id="remove">Remove</button>
+        </ul>
         </div>
 
         <div class="sidenav">
-          <a href="#">Home</a>
-          <a href="#">Dev tools</a>
+          <a href="#">Home</a><br>
+          <a href="#">Bingo Game</a>
+          <a href="#">Asteriod Game</a><br>
+          <a href="#">Sudoku Game</a><br>
+          <a href="#">Dev tools</a><br>
           <a href="https://mail.google.com/mail/u/0/?pli=1#inbox">myEmail</a>
-
         </div>
     </div>
   	<script src="/index.js"></script>
