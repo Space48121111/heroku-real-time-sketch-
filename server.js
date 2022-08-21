@@ -54,7 +54,7 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-var allowedFiles = ["/Asteroid.html", "/index.js", "/variables.js", "/css/styles.css", "/input.js", "/clientPlayer.js",  "/utilFuncs.js", "/background.webp", "/messages.js"]; 
+var allowedFiles = ["/Asteroid.html", "/index.js", "/variables.js", "/css/styles.css", "/input.js", "/clientPlayer.js",  "/utilFuncs.js", "/background.webp", "/messages.js", "/sidenav.js"];
 
 function FindFile(req)
 {
@@ -63,7 +63,7 @@ function FindFile(req)
 		if (req.includes(allowedFiles[i]))
 			return allowedFiles[i];
 	}
-	
+
 	return "";
 }
 
@@ -77,7 +77,7 @@ for (var i=0; i<allowedFiles.length; i++)
   			res.sendFile(__dirname + fileName);
 		}
 		console.log("Requesting file:" + fileName);
-	});	
+	});
 }
 
 function receiveMessage(message, index, id)
@@ -87,7 +87,7 @@ function receiveMessage(message, index, id)
 		id: id,
 		index: index
 	};
-  
+
 	convo.push(newMessage);
 	saveMessages();
 	// chatting part
@@ -111,7 +111,7 @@ function addPlayer(id)
 		id: id,
 		score: 0
 	};
-	
+
 	v.users.push(newPlayer);
 }
 
@@ -136,7 +136,7 @@ function findPlayer(id)
 			return i;
 		}
 	}
-	
+
 	return -1;
 }
 
@@ -145,17 +145,17 @@ io.on('connection', (socket) => {
   io.emit('pixels', pixels);
   // when a new user enters, it will join the chat.
   transmitMessages();
-  
+
   addPlayer(socket.id);
   socket.emit("id", socket.id);
 
   socket.on('chitChat1', (message) => {
 	receiveMessage(message, 1, socket.id);
   })
-  
+
   socket.on('chitChat2', (message) => {
 	receiveMessage(message, 2, socket.id);
-  })  
+  })
 
   socket.on('line', (message) => {
     console.log(message);
@@ -172,8 +172,8 @@ io.on('connection', (socket) => {
     console.log('A user has disconnected.');
     removePlayer(socket.id);
   });
-	
-	socket.on('up', (msg) => 
+
+	socket.on('up', (msg) =>
 	{
 		var i = findPlayer(socket.id);
 		if (i != -1)
@@ -182,32 +182,32 @@ io.on('connection', (socket) => {
 		}
 	});
 
-	socket.on('down', (msg) => 
+	socket.on('down', (msg) =>
 	{
 		var i = findPlayer(socket.id);
 		if (i != -1)
 		{
 			v.users[i].downPressed = msg;
 		}
-	});	
+	});
 
-	socket.on('right', (msg) => 
+	socket.on('right', (msg) =>
 	{
 		var i = findPlayer(socket.id);
 		if (i != -1)
 		{
 			v.users[i].rightPressed = msg;
 		}
-	});	
+	});
 
-	socket.on('left', (msg) => 
+	socket.on('left', (msg) =>
 	{
 		var i = findPlayer(socket.id);
 		if (i != -1)
 		{
 			v.users[i].leftPressed = msg;
 		}
-	});			
+	});
 });
 
 
@@ -219,7 +219,7 @@ function serverFrame()
 			sp.updateMovement(i);
 			sp.updateRotation(i);
 	}
-	
+
 	var outUsers = [];
 	for (var i=0; i<v.users.length; i++)
 	{
@@ -234,7 +234,7 @@ function serverFrame()
 
 		outUsers.push(outUser);
 	}
-	
+
 	io.emit("users", outUsers);
 }
 
