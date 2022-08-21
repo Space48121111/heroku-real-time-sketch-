@@ -11,6 +11,8 @@ const fs = require('fs').promises;
 
 const v = require("./serverVariables.js");
 var sp = require("./serverPlayer.js");
+var todo = [];
+var isChecked = [];
 
 function loadMessages()
 {
@@ -140,14 +142,35 @@ function findPlayer(id)
 	return -1;
 }
 
+function transmitTodo() 
+{
+	io.emit('todo', todo);
+	io.emit('isChecked', isChecked);
+}
+
 io.on('connection', (socket) => {
   console.log('A user has connected.');
   io.emit('pixels', pixels);
+  
   // when a new user enters, it will join the chat.
   transmitMessages();
+  transmitTodo();
 
   addPlayer(socket.id);
   socket.emit("id", socket.id);
+  
+  socket.on('addTodo', (message) => {
+  	todo.push(message);
+	// uncheck the task
+	isChecked.push(false); 
+	transmitTodo();
+	})
+  socket.on('isChecked', (message) => {
+  	var ck = message.split(':');
+	// 1:true
+	isChecked[ck[0]] = ck[1];
+	transmitTodo();
+  })
 
   socket.on('chitChat1', (message) => {
 	receiveMessage(message, 1, socket.id);
