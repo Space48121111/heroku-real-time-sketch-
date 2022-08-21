@@ -20,10 +20,19 @@ function updatels() {
       ls.innerHTML += todo[i]
     }
 
-    ls.innerHTML += '<button type="button" name="button" onclick=checked('+i+')>Checked</button>';
+    if (isChecked[i])
+    {
+      ls.innerHTML += '<button type="button" name="button" onclick=checked('+i+')>UnCheck</button>';
+
+    }
+    else
+    {
+      ls.innerHTML += '<button type="button" name="button" onclick=checked('+i+')>Checked</button>';
+
+    }
     ls.innerHTML += '</li>';
   }
-    ls.innerHTML += '</ul>';
+    ls.innerHTML += '</ul><br>';
     ls.innerHTML +=  '<button type="button" name="button"id="showmore" onclick=showmore()>Show More</button><br>';
     ls.innerHTML +=  '<button type="button" name="button"id="add" onclick=add()>Add</button>';
 
@@ -40,6 +49,8 @@ function add() {
 }
 
 function checked(i) {
-  isChecked[i] = true;
+  // change true to false, false to true
+  isChecked[i] = !isChecked[i];
   updatels();
+
 }
