@@ -3,6 +3,19 @@ var isShown = false;
 var isChecked = [false];
 var isAdding = false;
 
+// set client todo to server emitted todo task
+socket.on('todo', function(task) 
+	  {
+		todo = task;		
+      })
+socket.on('isChecked', function(task) 
+{
+  isChecked = task;
+  // after receiving both todo and ischecked
+  updatels();
+
+})
+      
 function updatels() {
   var ls = document.getElementById('todo');
   ls.innerHTML = '';
@@ -62,18 +75,20 @@ function getTodo() {
 
   if (str.length > 0)
   {
-    todo.push(str+' ');
-    
+     io.emit('todo', str+' ');
   }
 
   isAdding = false;
   updatels();
+  
 
 }
 
 function checked(i) {
-  // change true to false, false to true
-  isChecked[i] = !isChecked[i];
+  // toggle and change true to false, false to true
+  // isChecked[i] = !isChecked[i];
+  // toggle, once the button is pressed, send the opposite val of isChecked  
+  socket.emit('isChecked', i+':'+!isChecked[i]);
   updatels();
 
 }
