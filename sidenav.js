@@ -6,8 +6,8 @@ function generateLinks()
   nav.innerHTML += '<a href="#">Bingo Game</a><br>'
   nav.innerHTML += '<a href="/Asteroid.html">Asteroid Game</a><br>'
   nav.innerHTML += '<a href="#">Sudoku Game</a><br>'
-  nav.innerHTML += '<a href="#">Dev tools</a><br>'
-  nav.innerHTML += '<a href="https://mail.google.com/mail/u/0/?pli=1#inbox">myEmail</a>'
+  nav.innerHTML += '<a href="#">Dev Tools</a><br>'
+  nav.innerHTML += '<a href="https://mail.google.com/mail/u/0/?pli=1#inbox">Email</a>'
 
 }
 
