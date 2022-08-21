@@ -54,7 +54,7 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-var allowedFiles = ["/Asteroid.html", "/index.js", "/variables.js", "/css/styles.css", "/input.js", "/clientPlayer.js",  "/utilFuncs.js", "/background.webp", "/messages.js", "/sidenav.js"];
+var allowedFiles = ["/Asteroid.html", "/home.js", "/variables.js", "/css/styles.css", "/input.js", "/clientPlayer.js",  "/utilFuncs.js", "/background.webp", "/messages.js", "/sidenav.js"];
 
 function FindFile(req)
 {
