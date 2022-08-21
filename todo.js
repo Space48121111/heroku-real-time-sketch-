@@ -5,8 +5,8 @@ var isAdding = false;
 
 function updatels() {
   var ls = document.getElementById('todo');
-  ls.innerHTML = '';
-  ls.innerHTML += '<h3>Todo: </h3>';
+
+  ls.innerHTML += '<b>Todo: </b>';
   ls.innerHTML += '<ul>';
 
   for (var i=0; i<todo.length; i++)
@@ -63,7 +63,8 @@ function getTodo() {
 
   if (str.length > 0)
   {
-    todo.push(str);
+    todo.push(str+' ');
+    
   }
 
   isAdding = false;
