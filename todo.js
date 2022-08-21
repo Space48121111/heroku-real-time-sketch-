@@ -1,6 +1,7 @@
 var todo = ['Please take care of urself.'];
 var isShown = false;
 var isChecked = [false];
+var isAdding = false;
 
 function updatels() {
   var ls = document.getElementById('todo');
@@ -35,6 +36,15 @@ function updatels() {
     ls.innerHTML += '</ul><br>';
     ls.innerHTML +=  '<button type="button" name="button"id="showmore" onclick=showmore()>Show More</button><br>';
     ls.innerHTML +=  '<button type="button" name="button"id="add" onclick=add()>Add</button>';
+    if (isAdding)
+    {
+      ls.innerHTML +=  '<button type="button" name="button"id="add" onclick=new()>Add</button>';
+      ls.innerHTML +=  '<input type="text" id="addTodo" rows="40" cols="40">';
+    }
+    else
+    {
+      ls.innerHTML +=  '<button type="button" name="button"id="add" onclick=add()>Add</button>';
+    }
 
 }
 
@@ -45,6 +55,20 @@ function showmore() {
 updatels();
 
 function add() {
+  isAdding = true;
+  updatels();
+}
+
+function new() {
+  var str = document.getElementById('add').value;
+
+  if (str.length > 0)
+  {
+    todo.push(str);
+  }
+
+  isAdding = false;
+  updatels();
 
 }
 
