@@ -5,7 +5,7 @@ var isAdding = false;
 
 function updatels() {
   var ls = document.getElementById('todo');
-
+  ls.innerHTML = '';
   ls.innerHTML += '<b>Todo: </b>';
   ls.innerHTML += '<ul>';
 
