@@ -2,7 +2,7 @@ function generateLinks()
 {
   var nav = document.getElementById('sidenav');
   nav.innerHTML = '';
-  nav.innerHTML += '<a href="#">Home</a><br>'
+  nav.innerHTML += '<a href="/">Home</a><br>'
   nav.innerHTML += '<a href="#">Bingo Game</a><br>'
   nav.innerHTML += '<a href="/Asteroid.html">Asteroid Game</a><br>'
   nav.innerHTML += '<a href="#">Sudoku Game</a><br>'
