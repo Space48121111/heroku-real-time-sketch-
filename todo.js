@@ -35,10 +35,9 @@ function updatels() {
   }
     ls.innerHTML += '</ul><br>';
     ls.innerHTML +=  '<button type="button" name="button"id="showmore" onclick=showmore()>Show More</button><br>';
-    ls.innerHTML +=  '<button type="button" name="button"id="add" onclick=add()>Add</button>';
     if (isAdding)
     {
-      ls.innerHTML +=  '<button type="button" name="button"id="add" onclick=getTodo()>Add</button>';
+      ls.innerHTML +=  '<button type="button" name="button"id="add" onclick=getTodo()>Send</button>';
       ls.innerHTML +=  '<input type="text" id="addTodo" rows="40" cols="40">';
     }
     else
