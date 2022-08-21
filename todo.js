@@ -75,7 +75,8 @@ function getTodo() {
 
   if (str.length > 0)
   {
-     socket.emit('todo', str+' ');
+     socket.emit('addTodo', str+' ');
+     console.log('Sending');
   }
 
   isAdding = false;
