@@ -35,8 +35,16 @@ body {
   width: 30%;
   postion: fixed;
   background-color: ivory;
-  color: silver;
-  z-index: 1;
+  font-size: 30px;
+  font-family:monospace;
+
+}
+
+.asteroid {
+  padding: 10px;
+  height: 200%;
+  width: 30%;
+  postion: fixed;
   font-size: 30px;
   font-family:monospace;
 
