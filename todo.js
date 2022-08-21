@@ -11,14 +11,13 @@ function updatels() {
 
   for (var i=0; i<todo.length; i++)
   {
-    ls.innerHTML += '<li>';
     if (isChecked[i])
     {
-      ls.innerHTML += '<font color="green">' + todo[i] + '</font>';
+      ls.innerHTML += '<li><font color="green">' + todo[i] + '</font>';
     }
     else
     {
-      ls.innerHTML += todo[i]
+      ls.innerHTML += '<li>' + todo[i]
     }
 
     if (isChecked[i])
