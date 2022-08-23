@@ -83,6 +83,21 @@
         }
       }
 
+function testMongodb() {
+  fetch("/api/movie")
+    .then((response) => response.json())
+    .then((data) => {
+      const detailsElement = document.getElementById("movie");
+
+      console.log(data.poster);
+      console.log(data.title);
+      console.log(data.fullplot);
+
+      detailsElement.style.visibility = "visible";
+    });
+}
+
+testMongodb();
 
       setInterval(function (){
         frame()
