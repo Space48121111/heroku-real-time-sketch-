@@ -14,6 +14,9 @@ var sp = require("./serverPlayer.js");
 var todo = [];
 var isChecked = [];
 
+const { MongoClient } = require("mongodb");
+const uri = process.env.MONGODB_URI;
+
 function loadMessages()
 {
 	var doesExist = fs1.existsSync(__dirname + "/messages.json");
